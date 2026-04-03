@@ -36,7 +36,10 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'django.contrib.staticfiles', # Upto here, these apps are present by Default.
+    'rest_framework',
+    'rest_framework.authtoken',
+    'accounts' 
 ]
 
 MIDDLEWARE = [
@@ -121,3 +124,19 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Field added for user Authentication.
+AUTH_USER_MODEL = 'accounts.User'
+
+# Field added as we are using email(rather than username) for user login Authentication.
+AUTHENTICATION_BACKENDS = [
+    'accounts.backends.EmailBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+# DRF Settings for Token Authenication.
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
