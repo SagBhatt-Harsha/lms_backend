@@ -8,6 +8,8 @@ class CustomUserAdmin(UserAdmin):
     list_display = ('email', 'role', 'is_staff', 'is_active')
     ordering = ('email',)
 
+    search_fields = ('email',)
+    
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
         ('Permissions', {'fields': ('is_staff', 'is_active', 'is_superuser')}),

@@ -8,6 +8,7 @@ class QualificationInline(admin.TabularInline):
 
 class MobilizationAdmin(admin.ModelAdmin):
     list_display = ('name', 'mobile', 'state', 'date')
+    search_fields = ('name', 'mobile')
     inlines = [QualificationInline]
 
 admin.site.register(MobilizationRecord, MobilizationAdmin)

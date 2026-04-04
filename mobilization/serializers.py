@@ -34,6 +34,7 @@ class MobilizationSerializer(serializers.ModelSerializer):
     
     
     def update(self, instance, validated_data):
+        # For Update. By default, DRF can't handle Nested data(qualifications inside MobilizationRecord). 
         qualifications_data = validated_data.pop('qualifications', None)
 
         # Update main record
