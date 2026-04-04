@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles', # Upto here, these apps are present by Default.
     'rest_framework',
     'rest_framework.authtoken',
-    'accounts' 
+    'accounts',
+    'mobilization'
 ]
 
 MIDDLEWARE = [
