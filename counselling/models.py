@@ -27,7 +27,8 @@ class CounsellingLog(models.Model):
         ("Logistics and Warehousing", "Logistics and Warehousing"), 
         ("Hospitality and Tourism", "Hospitality and Tourism"),
         ("Sales and Customer Relation", "Sales and Customer Relation"),
-        ("ITES", "ITES")
+        ("ITES", "ITES"),
+        ("Industrial Sewing", "Industrial Sewing")
     ]
 
     mobilization_record = models.ForeignKey(

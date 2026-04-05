@@ -1,0 +1,24 @@
+from rest_framework.viewsets import ModelViewSet
+from rest_framework.permissions import IsAuthenticated
+
+from .models import Teacher
+from .serializers import TeacherSerializer
+
+# Create your views here.
+
+class TeacherViewSet(ModelViewSet):
+    serializer_class = TeacherSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        # This Method Overrides Default queryset.
+        # For api endpoint: GET /api/teachers/?domain=
+        queryset = Teacher.objects.all()
+
+        # Filter by Domain
+        domain = self.request.query_params.get('domain')
+
+        if domain:
+            queryset = queryset.filter(domain=domain)
+
+        return queryset
