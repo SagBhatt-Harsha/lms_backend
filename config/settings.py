@@ -43,7 +43,9 @@ INSTALLED_APPS = [
     'mobilization',
     'counselling',
     'teachers',
-    'batches'
+    'batches',
+    'onboarding',
+    'dashboard'
 ]
 
 MIDDLEWARE = [
