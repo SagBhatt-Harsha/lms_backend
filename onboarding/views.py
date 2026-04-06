@@ -1,5 +1,5 @@
 from rest_framework.viewsets import ModelViewSet
-from rest_framework.permissions import IsAuthenticated
+from accounts.permissions import RolePermission
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
@@ -12,7 +12,7 @@ from batches.models import Batch
 class TraineeViewSet(ModelViewSet):
     queryset = Trainee.objects.all()
     serializer_class = TraineeSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [RolePermission]
 
     def perform_create(self, serializer):
         serializer.save(registered_by=self.request.user)

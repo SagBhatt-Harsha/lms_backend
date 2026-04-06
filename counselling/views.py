@@ -1,5 +1,5 @@
 from rest_framework.viewsets import ModelViewSet
-from rest_framework.permissions import IsAuthenticated
+from accounts.permissions import RolePermission
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework import status
@@ -12,7 +12,7 @@ from .serializers import CounsellingSerializer
 class CounsellingViewSet(ModelViewSet):
     queryset = CounsellingLog.objects.all()
     serializer_class = CounsellingSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [RolePermission]
 
     def perform_create(self, serializer):
         '''Logged-in User's id is stored in counselled_by Field.'''

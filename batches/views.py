@@ -1,5 +1,5 @@
 from rest_framework.viewsets import ModelViewSet
-from rest_framework.permissions import IsAuthenticated
+from accounts.permissions import RolePermission
 
 from .models import Batch
 from .serializers import BatchSerializer
@@ -8,7 +8,7 @@ from .serializers import BatchSerializer
 
 class BatchViewSet(ModelViewSet):
     serializer_class = BatchSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [RolePermission]
 
     def get_queryset(self):
         queryset = Batch.objects.all()

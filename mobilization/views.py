@@ -1,7 +1,7 @@
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated
+from accounts.permissions import RolePermission
 
 from .models import MobilizationRecord
 from .serializers import MobilizationSerializer
@@ -11,7 +11,7 @@ from .serializers import MobilizationSerializer
 class MobilizationViewSet(ModelViewSet):
     queryset = MobilizationRecord.objects.all()
     serializer_class = MobilizationSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [RolePermission]
 
     def perform_create(self, serializer):
         serializer.save(created_by=self.request.user)
